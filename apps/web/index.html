@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Filing RAG Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">SEC Filing Studio</p>
+          <h1>Ask filings questions with evidence you can trust.</h1>
+          <p class="subhead">
+            Upload filings, ask questions, and inspect the exact parent section
+            used to answer.
+          </p>
+        </div>
+        <div class="meta">
+          <div class="stat">
+            <span>Pipeline</span>
+            <strong>Retrieve → Rerank → Parent Answer</strong>
+          </div>
+          <div class="stat">
+            <span>LLM</span>
+            <strong>DashScope (env)</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="grid">
+        <div class="panel upload">
+          <h2>Upload filing</h2>
+          <p>PDF, HTML, or TXT. The pipeline builds parent blocks + chunks.</p>
+          <input id="fileInput" type="file" />
+          <button id="uploadBtn">Ingest filing</button>
+          <div class="existing">
+            <label for="existingSelect">Ingest existing file</label>
+            <div class="existing-row">
+              <select id="existingSelect"></select>
+              <button id="existingBtn">Use existing</button>
+            </div>
+          </div>
+          <div id="uploadStatus" class="status"></div>
+          <div class="docList">
+            <h3>Available filings</h3>
+            <ul id="docList"></ul>
+          </div>
+        </div>
+
+        <div class="panel chat">
+          <h2>Ask a question</h2>
+          <textarea
+            id="questionInput"
+            placeholder="e.g., Where is the going concern language?"
+          ></textarea>
+          <button id="askBtn">Ask</button>
+          <div class="answer-box">
+            <h3>LLM answer</h3>
+            <div id="answerPanel" class="answer"></div>
+          </div>
+        </div>
+
+        <div class="panel sources">
+          <h2>Sources</h2>
+          <p>Click a parent to view its text.</p>
+          <div id="sourcesList" class="sourcesList"></div>
+          <div id="evidencePanel" class="evidence"></div>
+        </div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
